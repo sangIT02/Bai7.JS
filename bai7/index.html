@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+
+
+    <div class="top">
+      <form>
+        <label for="name">Tên:</label><br />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          onfocus="fonfocus()"
+          onchange="fonchange()"
+        /><br /><br />
+
+        <label for="email">Email:</label><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          onfocus="showMessage('Vui lòng nhập email')"
+          onchange="showMessage(this.value)"
+        /><br /><br />
+
+        <label for="phone">Số điện thoại:</label><br />
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          onfocus="showMessage('Vui lòng nhập số điện thoại')"
+          onchange="showMessage(this.value)"
+        /><br /><br />
+      </form>
+
+    </div>
+
+
+
+    <div class="bot" id="bot" style="width: 100%; height: 200px">
+      <p onclick="doi()">day la trang html</p>
+      
+      <script>
+       function doi(){
+        let mau = prompt("Xin Nhap Vao Mau");
+        document.getElementById("bot").style.backgroundColor = mau;
+       }
+
+        function doimau(){
+            document.getElementById("bulb1").style.color = "red"
+        }
+        function check(so){
+            if(so =="")
+            alert("Xin hay nhap so")
+            return false;
+        }
+        function tinh(s){
+            let a = document.getElementById("so1").value;
+            let b = document.getElementById("so2").value;
+            if(!check(a));
+            if(!check(b) && b != 0);
+           if(s != "^"){
+            let t = a+s+b;
+            document.getElementById("result1").value = eval(t );
+           }
+           else{
+            let c = Number(a);
+            let d = Number(b);
+            document.getElementById("result1").value = Math.pow(c,d);
+
+           }
+        }
+        function fonfocus(){
+          alert("focus");
+        }
+        function fonchange(){
+          alert('change');
+        }
+        setInterval(moden,2000);
+        setInterval(dongho,1000);
+        function dongho(){
+          let ct = new Date();
+          let h = ct.getHours();
+          let m = ct.getMinutes();
+          let s = ct.getSeconds();
+          let tg = h+":"+m+":"+s;
+          document.getElementById('dongho').innerHTML = tg;
+        }
+        function moden(){
+          let img = document.getElementById("den");
+          if(img.src.indexOf("Capture.PNG") >= 0){
+            img.src = "Capture1.PNG"
+          }
+          else{
+            img.src = "Capture.PNG"
+          }
+        }
+      </script>
+    </div>
+
+
+    
+    <div class="bulb" style="height: 500px;">
+      <img src="Capture.PNG" alt="" onclick="moden(this)" id="den">
+    </div>
+
+
+    <div class="dongho" id="dongho" style="margin: 100px 0;"></div>
+
+
+
+    <div class="maytinh">
+        So Thu nhat <input type="text" id="so1"> <br>
+        <input type="button" value="+" onclick="tinh(value)">
+        <input type="button" value="-" onclick="tinh(value)">
+        <input type="button" value="*" onclick="tinh(value)">
+        <input type="button" value="/" onclick="tinh(value)">
+        <input type="button" value="^" onclick="tinh(value)">
+        <br>
+        So thu 2 <input type="text" id="so2"> <br>
+        Ket Qua <input type="text" id="result1">
+    </div>
+
+
+
+
+    <div class="b4" style=" margin-top: 100px; background-color: bisque;" id="b4">
+      <p>
+        <label for="">Enter your email address</label>
+        <input type="text" id="" name="">
+        <button type="button" onclick="them()">Add more</button>
+      </p>
+      <script>
+        function them(){
+          // tao cac doi tuong con label, input, button
+          let label = document.createElement("label");
+          label.innerHTML = "Enter your email address "
+          let input = document.createElement("input");
+          input.type = "text";
+          let button = document.createElement("button");
+          button.type = "button";
+          button.innerHTML = "Remove";
+          // tao ra the p
+          let p = document.createElement("p");
+          // gan cac con vao cha
+          p.appendChild(label);
+          p.appendChild(input);
+          p.appendChild(button);
+          // gan p vao div b4
+          document.getElementById('b4').appendChild(p);
+          button.addEventListener("click",function(){
+            let p = button.parentNode;
+            document.getElementById('b4').removeChild(p);
+          });
+
+        }
+
+        
+      </script>
+    </div>
+    <div class="array">
+      <script>
+        //
+        let a = [1,2,6,9,3];
+        // sap xep tang dan
+        a.sort();
+        // sx giam dan
+        a.reverse();
+        // gghep mang thanh chuoi
+        a.join("$   ");
+      </script>
+    </div>
+  </body>
+</html>
